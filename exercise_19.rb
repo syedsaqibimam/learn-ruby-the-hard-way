@@ -19,3 +19,13 @@ cheese_and_crackers(10 + 20, 5 +6)
 
 puts "And we can combine the two, variable and math:"
 cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
+
+print "Enter cheese count: "
+cheese_count = $stdin.gets.chomp.to_i
+
+print "Enter crackers count: "
+crackers_count = $stdin.gets.chomp.to_i
+
+puts "processing via cheese_and_crackers method..."
+
+cheese_and_crackers(cheese_count, crackers_count)
