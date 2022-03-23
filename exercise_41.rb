@@ -14,7 +14,7 @@ PHRASES ={
 		"Set *** to an instance of class ###.",
 	"***.***(@@@)" =>
 		"From *** get the *** function, and call it with parameters @@@.",
-	"***.***" =>
+	"***.*** = '***'"=>
 		"From *** get the *** attribute and set it to '***'."
 }
 
@@ -27,7 +27,7 @@ open(WORD_URL) {|f|
 def craft_names(rand_words, snippet, pattern, caps=false)
 	names = snippet.scan(pattern).map do
 		word = rand_words.pop()
-		caps ? word.capatalize : word 
+		caps ? word.capitalize : word 
 	end
 
 	return names * 2
@@ -38,18 +38,18 @@ def craft_params(rand_words, snippet, pattern)
 		param_count = rand(3) + 1
 		params = (0..param_count).map{|x| rand_words.pop()}
 		params.join (', ')
-end
+    end
 
 	return names * 2 
 end
 
-def convert(snippet, pharse)
+def convert(snippet, phrase)
 	rand_words = WORDS.sort_by {rand}
 	class_names = craft_names(rand_words, snippet, /###/, caps =true)
 	other_names = craft_names(rand_words, snippet, /\*\*\*/)
 	param_names = craft_params(rand_words, snippet, /@@@/)
 
-	result = []
+	results = []
 
 	[snippet, phrase].each do |sentence|
 		# fake class names, also copies sentence
